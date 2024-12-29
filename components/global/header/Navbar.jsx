@@ -1,11 +1,11 @@
 'use client'
 
-import { navLinks } from "@/utils/constants"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import {  FaTimes } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { navLinks } from "@/utils/constants";
 
 const Navbar = ({isOpen, handleOpen}) => {
   const [isDarkMode, setIsDarkMode] = useState(false)
