@@ -23,7 +23,7 @@ const Navbar = ({isOpen, handleOpen}) => {
       }, [isDarkMode]);
 
   return (
-    <nav className='h-20 w-full grid place-items-center shadow-lg fixed top-0 right-0 left-0 '>
+    <nav className='h-20 w-full grid place-items-center shadow-lg fixed top-0 right-0 left-0 z-[99]'>
       <div className="container main-container flex justify-between items-center ">
       <Link href="/" >
             <h1 className="text-2xl lg:text-3xl tracking-wide poppins-bold logo ">Recipe Finder</h1>

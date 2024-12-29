@@ -17,6 +17,9 @@
   --secondary-hover: #ffe476; 
   --links-color:#f97316;
   --links-hover:#fb923c;
+  --search-btn-bg: #111;
+  --search-btn-cl: #FFFFFF;
+  --paragraph-cl: #4b5563;
 }
 
 [data-theme="dark"] {
@@ -27,10 +30,23 @@
   --text-color: #f3f4f6; /* Almost white for primary text */
   --text-secondary-color: #9ca3af; /* Light gray for secondary text */
   --border-color: #374151; /* Dark gray for borders */
-  --input-background: #374151; /* Darker input fields */
+  --input-background: #49515f; /* Darker input fields */
   --button-hover: #ea580c; /* Slightly darker orange */
   --links-color:#FFFFFF;
   --links-hover:#feddc2;
+  --search-btn-bg: #FFFFFF;
+  --search-btn-cl: #111;
+  --paragraph-cl: #d1d5db ;
+
+}
+
+.search-btn {
+  background-color: var(--search-btn-bg);
+  color: var(--search-btn-cl);
+}
+
+p {
+  color: var(--paragraph-cl);
 }
 
 .dropdown {
