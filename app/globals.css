@@ -222,12 +222,16 @@ a:hover {
   color: #f1963b;
 }
 
-input {
+input, select {
   background-color: var(--input-background);
   color: var(--text-color);
   border: 1px solid var(--border-color);
 }
 
 input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+select:focus {
   outline: 2px solid var(--primary-color);
 }

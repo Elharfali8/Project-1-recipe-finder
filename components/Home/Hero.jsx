@@ -3,8 +3,17 @@ import { motion } from "framer-motion";
 import { SearchInput } from "../global/SearchInput";
 import Image from "next/image";
 import heroImg from '@/images/hero-img.jpg'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+    const [searchTerm, setSearchTerm] = useState('')
+    const router = useRouter()
+
+    const handleSearch = () => {
+        router.push(`/recipes?query=${searchTerm}`)
+    }
+
   return (
       <hero className='min-h-[calc(100vh-80px)] grid place-items-center mt-20 py-8'>
           <div className="container main-container grid lg:grid-cols-2 place-content-center gap-6">
@@ -24,7 +33,7 @@ const Hero = () => {
                         Find recipes tailored to your tastes, diet, and mood. Ready to cook?
                   </p>
                   {/* Search Input */}
-                  <SearchInput />
+                  <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleSearch={handleSearch} width='max-w-lg' />
               </div>
               {/* ----------------- */}
               <div className="hidden lg:flex items-center justify-center ">

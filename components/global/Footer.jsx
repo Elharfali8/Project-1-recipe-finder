@@ -1,6 +1,6 @@
 export function Footer() {
     return (
-      <footer className="border-t py-6 mt-12">
+      <footer className="border-t py-6 ">
         <div className="container mx-auto text-center">
           <p className="">
             &copy; {new Date().getFullYear()} Recipe Finder. All rights reserved.
