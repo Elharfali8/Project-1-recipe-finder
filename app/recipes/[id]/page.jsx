@@ -6,7 +6,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 
-const Page = () => {
+const SingleRecipePage = () => {
     const [isFavorite, setIsFavorite] = useState(false);
     
     const sanitizeSummary = (summary) => {
@@ -122,4 +122,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default SingleRecipePage;

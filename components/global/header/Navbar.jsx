@@ -3,14 +3,14 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaUser } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { navLinks } from "@/utils/constants";
-import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase'; // Import Firebase auth
 import { useRouter } from 'next/navigation';
 
-const Navbar = ({isOpen, handleOpen}) => {
+const Navbar = ({isOpen, setIsOpen, setIsDropdownOpen, handleOpen}) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [user, setUser] = useState(null); // To store user info
   const router = useRouter();
@@ -29,14 +29,11 @@ const Navbar = ({isOpen, handleOpen}) => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth); // Sign out the user from Firebase
-      router.push('/login'); // Redirect to login page after logout
-    } catch (error) {
-      console.error("Error logging out:", error.message);
-    }
-  };
+  const handleDrop = () => {
+    setIsDropdownOpen((prev) => !prev)
+    setIsOpen(false)
+  }
+  
     
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev)
@@ -56,11 +53,6 @@ const Navbar = ({isOpen, handleOpen}) => {
           <h1 className="text-2xl lg:text-3xl tracking-wide poppins-bold logo ">Recipe Finder</h1>
         </Link>
         
-        {/* Conditionally render the Log Out button if the user is logged in */}
-        {user && (
-          <button onClick={handleLogout}>Log Out</button>
-        )}
-
         <ul className="hidden lg:flex items-center gap-x-3">
           {navLinks.map((link) => {
             const { id, title, path } = link;
@@ -83,6 +75,14 @@ const Navbar = ({isOpen, handleOpen}) => {
           >
             {isDarkMode ? "🌙" : "☀️"}
           </motion.div>
+
+          <div className="grid place-items-center">
+              {user && (
+              <button onClick={handleDrop} className="rounded-full p-1 bg-orange-400 text-white">
+                <FaUser size={20}  />
+              </button>
+            )}
+          </div>
           
           <motion.div
             onClick={handleOpen}
@@ -93,15 +93,15 @@ const Navbar = ({isOpen, handleOpen}) => {
           >
             {isOpen ? <FaTimes size={26} /> : <FaBarsStaggered size={26} />}
           </motion.div>
+
           
           <div className="hidden lg:flex items-center gap-x-3">
-            {/* Only show sign-in/sign-up buttons if the user is not logged in */}
             {!user && (
               <>
-                <Link href='/sign-in' className="px-5 py-2 rounded-2xl border-[2px] dark:border-[#ea580c] border-[#f97316] text-lg xl:text-xl capitalize tracking-wide">
-                  signin
+                <Link href='/sign-up' className="px-5 py-2 rounded-2xl border-[2px] dark:border-[#ea580c] border-[#f97316] text-lg xl:text-xl capitalize tracking-wide">
+                  sign up
                 </Link>
-                <Link href='/sign-up' className="text-lg xl:text-xl capitalize tracking-wide">
+                <Link href='/login' className="text-lg xl:text-xl capitalize tracking-wide">
                   login
                 </Link>
               </>

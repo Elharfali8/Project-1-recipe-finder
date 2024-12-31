@@ -7,9 +7,9 @@ const DropDown = ({ isOpen }) => {
   return (
     <div
       className={`
-        absolute lg:hidden top-[95px] right-4 w-full max-w-[200px] p-2 rounded-lg 
+        fixed lg:hidden top-[95px] right-4 w-full max-w-[200px] p-2 rounded-lg 
         dropdown transition-all duration-300 ease-in-out transform 
-        ${isOpen ? 'translate-y-0 opacity-100 z-[99]' : '-translate-y-5 opacity-0 z-[0]'}
+        ${isOpen ? 'translate-y-0 opacity-100 z-[90]' : '-translate-y-5 opacity-0 z-[0]'}
       `}
     >
       <ul className="grid gap-y-2">
