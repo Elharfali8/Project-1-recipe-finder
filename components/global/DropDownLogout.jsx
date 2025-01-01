@@ -1,5 +1,8 @@
 'use client'
 
+import Link from "next/link"
+import { FaUserAlt } from "react-icons/fa"
+
 
 const DropDownLogout = ({ isDropdownOpen, handleLogout }) => {
   return (
@@ -9,7 +12,12 @@ const DropDownLogout = ({ isDropdownOpen, handleLogout }) => {
         dropdown transition-all duration-300 ease-in-out transform 
         ${isDropdownOpen ? 'translate-y-0 opacity-100 z-[90]' : '-translate-y-5 opacity-0 z-[0]'}
       `}
-    >
+      >
+          <div className="mb-2 p-2">
+              <Link href={'/profile'} className="text-lg lg:text-xl flex items-center gap-x-1 border-[2px] border-orange-300 p-1 rounded text-orange-600 transition-all ease-in-out duration-150 hover:bg-white dark:text-orange-400 hover:dark:bg-slate-300 hover:dark:text-orange-500">
+                <FaUserAlt />  Go to profile
+              </Link>
+          </div>
       
           <div className="p-2">
           <button
